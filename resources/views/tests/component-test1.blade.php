@@ -4,4 +4,7 @@
     </x-slot>
 
     test1
+    <x-tests.card title="タイトル" content="本文">
+
+    </x-tests.card>
 </x-tests.app>
