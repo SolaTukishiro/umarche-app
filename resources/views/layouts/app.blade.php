@@ -18,6 +18,8 @@
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @if(request()->is('owner*'))
                 @include('layouts.owner-navigation')
+            @elseif(request()->is('admin*'))
+                @include('layouts.admin-navigation')
             @else
                 @include('layouts.navigation')
             @endif
