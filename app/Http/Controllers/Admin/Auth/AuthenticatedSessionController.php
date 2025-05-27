@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Log;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -16,20 +17,32 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('admin.auth.login');
+        return view('admins.auth.login');
     }
 
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
-    {
-        $request->authenticate();
 
-        $request->session()->regenerate();
+public function store(LoginRequest $request): RedirectResponse
+{
+    Log::info('ログイン入力', $request->only('email', 'password'));
 
-        return redirect()->intended(route('admin.dashboard', absolute: false));
+    if (! Auth::guard('admins')->attempt(
+        $request->only('email', 'password'),
+        $request->filled('remember')
+    )) {
+        Log::warning('ログイン失敗', $request->only('email'));
+
+        return back()->withErrors([
+            'email' => 'メールアドレスまたはパスワードが正しくありません。',
+        ]);
     }
+
+    $request->session()->regenerate();
+
+    return redirect()->intended(route('admin.dashboard'));
+}
 
     /**
      * Destroy an authenticated session.

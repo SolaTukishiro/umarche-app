@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\OwnersController;
 use App\Http\Controllers\ComponentTestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LifeCycleTestController;
@@ -24,5 +25,8 @@ Route::get('/component-test2', [ComponentTestController::class, 'showComponent2'
 
 Route::get('/servicecontainertest', [LifeCycleTestController::class, 'showServiceContainerTest']);
 Route::get('/serviceprovidertest', [LifeCycleTestController::class, 'showServiceProviderTest']);
+
+Route::resource('owners', OwnersController::class)
+->middleware('auth:admins');
 
 require __DIR__.'/adminAuth.php';

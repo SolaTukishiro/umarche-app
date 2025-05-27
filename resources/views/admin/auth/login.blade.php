@@ -3,8 +3,8 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('admin.login') }}">
-        <h1 class="text-white text-xl text-center my-4">管理者用ログイン画面</h1>
         @csrf
+        <h1 class="text-white text-xl text-center my-4">管理者用ログイン画面</h1>
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />

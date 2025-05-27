@@ -48,7 +48,7 @@ class LoginRequest extends FormRequest
             $guard = 'users';
         }
 
-        if (! Auth::guard($guard)->attempt($this->only('email', 'password'), $this->filed('remember'))) {
+        if (! Auth::guard($guard)->attempt($this->only('email', 'password'), $this->filled('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
