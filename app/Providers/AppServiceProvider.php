@@ -22,7 +22,9 @@ class AppServiceProvider extends ServiceProvider
         // ownerから始まるURL
         if(request()->is('owner*')){
             config(['session.cookie' =>config('session.cookie_owner')]);
-        } else {
+        } else if(request()->is('admin*')){
+            config(['session.cookie' =>config('session.cookie_admin')]);
+        }else{
             config(['session.cookie' => config('session.cookie')]);
         }
     }

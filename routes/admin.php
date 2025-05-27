@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\OwnersController;
 use App\Http\Controllers\ComponentTestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LifeCycleTestController;
@@ -11,9 +12,9 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth:users', 'verified'])->name('dashboard');
+})->middleware(['auth:admins', 'verified'])->name('dashboard');
 
-Route::middleware('auth:users')->group(function () {
+Route::middleware('auth:admins')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -25,14 +26,7 @@ Route::get('/component-test2', [ComponentTestController::class, 'showComponent2'
 Route::get('/servicecontainertest', [LifeCycleTestController::class, 'showServiceContainerTest']);
 Route::get('/serviceprovidertest', [LifeCycleTestController::class, 'showServiceProviderTest']);
 
-require __DIR__.'/auth.php';
+Route::resource('owners', OwnersController::class)
+->middleware('auth:admins');
 
-Route::middleware('web')
-    ->prefix('owner')
-    ->name('owner.')
-    ->group(base_path('routes/owner.php'));
-
-Route::middleware('web')
-    ->prefix('admin')
-    ->name('admin.')
-    ->group(base_path('routes/admin.php'));
+require __DIR__.'/adminAuth.php';

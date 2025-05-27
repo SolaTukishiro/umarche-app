@@ -15,6 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectGuestsTo(function(Request $request){
             if(request()->routeIs('owner*')){
                 return $request->expectsJson() ? null : route('owner.login');
+            } else if(request()->routeIs('admin*')){
+                return $request->expectsJson() ? null : route('admin.login');
             }
             return $request->expectsJson()? null : route('login');
         });

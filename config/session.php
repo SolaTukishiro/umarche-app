@@ -135,6 +135,10 @@ return [
         'SESSION_COOKIE_OWNER',
         Str::slug(env('APP_NAME', 'laravel'), '_').'_session_owner'
     ),
+    'cookie_admin' => env(
+        'SESSION_COOKIE_OWNER',
+        Str::slug(env('APP_NAME', 'laravel'), '_').'_session_admin'
+    ),
 
     /*
     |--------------------------------------------------------------------------
