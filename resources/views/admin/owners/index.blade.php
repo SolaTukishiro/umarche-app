@@ -42,6 +42,9 @@
                                         <td class="px-4 py-3">{{$owner->name}}</td>
                                         <td class="px-4 py-3">{{$owner->email}}</td>
                                         <td class="px-4 py-3">{{$owner->created_at->diffForHumans()}}</td>
+                                        <td class="w-10 text-center">
+                                            <button onclick="location.href='{{route('admin.owners.edit', ['owner'=>$owner->id])}}'" class="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded">編集する</button>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
