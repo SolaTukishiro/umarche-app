@@ -27,6 +27,6 @@ Route::get('/servicecontainertest', [LifeCycleTestController::class, 'showServic
 Route::get('/serviceprovidertest', [LifeCycleTestController::class, 'showServiceProviderTest']);
 
 Route::resource('owners', OwnersController::class)
-->middleware('auth:admins');
+->middleware('auth:admins')->except(['show']);
 
 require __DIR__.'/adminAuth.php';

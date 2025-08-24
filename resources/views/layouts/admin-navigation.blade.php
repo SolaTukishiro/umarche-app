@@ -76,6 +76,12 @@
             <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.owner.indeex')" :active="request()->routeIs('admin.owner.indeex')">
+                    オーナー管理
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.profile.edit')">
+                    期限切れオーナー
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
