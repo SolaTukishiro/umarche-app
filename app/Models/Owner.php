@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Shop;
 
 class Owner extends Authenticatable
 {
@@ -44,5 +45,9 @@ class Owner extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function shop(){
+        return $this->hasOne(Shop::class);
     }
 }
