@@ -7,7 +7,7 @@ use App\Http\Controllers\LifeCycleTestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.welcome');
 });
 
 Route::get('/dashboard', function () {
@@ -28,5 +28,10 @@ Route::get('/serviceprovidertest', [LifeCycleTestController::class, 'showService
 
 Route::resource('owners', OwnersController::class)
 ->middleware('auth:admins')->except(['show']);
+
+Route::prefix('expired-owners')->middleware('auth:admins')->group(function(){
+    Route::get('index', [OwnersController::class, 'expiredOwnerIndex'])->name('expired-owners.index');
+    Route::post('destroy/{owner}', [OwnersController::class, 'expiredOwnerDestroy'])->name('expired-owners.destroy');
+});
 
 require __DIR__.'/adminAuth.php';
