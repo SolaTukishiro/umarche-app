@@ -45,11 +45,10 @@
                                                 <input type="password" id="password_confirmation" name="password_confirmation" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                             </div>
                                         </div>
-                                        </div>
-                                        <div class="p-2 w-full mt-4 flex justify-around">
-                                            <button type="button" onclick="location.href='{{route('admin.owners.index')}}'" class="flex mx-auto bg-gray-200 border-0 py-2 px-8 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
-                                            <button type="submit" class="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">登録</button>
-                                        </div>
+                                    </div>
+                                    <div class="p-2 w-full mt-4 flex justify-around">
+                                        <button type="button" onclick="location.href='{{route('admin.owners.index')}}'" class="flex mx-auto bg-gray-200 border-0 py-2 px-8 focus:outline-none hover:bg-gray-400 rounded text-lg">戻る</button>
+                                        <button type="submit" class="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">登録</button>
                                     </div>
                                 </form>
                             </div>
