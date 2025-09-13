@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 use App\Http\Requests\UploadImageRequest;
+use App\Services\imageService;
 
 class shopController extends Controller
 {
@@ -45,13 +46,7 @@ class shopController extends Controller
     public function update(UploadImageRequest $request, $id){
         $imageFile = $request->image;
         if(!is_null($imageFile) && $imageFile->isValid()){
-            $manager = new ImageManager(new Driver());
-            //Storage::putFile('shops/', $imageFile); リサイズなし
-            $fileName = uniqid(rand().'_');
-            $extension = $imageFile->extension();
-            $fileNameToStore = $fileName. '.' . $extension;
-            $resizedImage = $manager->read($imageFile)->resize(1920, 1080)->encode();
-            Storage::put('shops/'. $fileNameToStore, $resizedImage);
+            $fileNameToStore = imageService::upload($imageFile, 'shops');
         }
 
         return redirect()->route('owner.shops.index');
