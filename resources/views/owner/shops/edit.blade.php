@@ -15,8 +15,31 @@
                         <div class="-m-2">
                             <div class="p-2 w-1/2 mx-auto">
                                 <div class="relative">
+                                    <label for="name" class="leading-7 text-sm text-gray-600" required>店名</label>
+                                    <input type="text" id="name" name="name" value="{{$shop->name}}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                </div>
+                            </div>
+                            <div class="p-2 w-1/2 mx-auto">
+                                <div class="relative">
+                                    <label for="information" class="leading-7 text-sm text-gray-600" required>店舗情報</label>
+                                    <textarea type="text" id="information" name="information" rows="10" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{$shop->information}}</textarea>
+                                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                </div>
+                            </div>
+                            <div class="w-32">
+                                <x-shop-thumbnail :filename="$shop->filename"/>
+                            </div>
+                            <div class="p-2 w-1/2 mx-auto">
+                                <div class="relative">
                                     <label for="image" class="leading-7 text-sm text-gray-600">画像</label>
                                     <input type="file" id="image" name="image" accept=“image/png,image/jpeg,image/jpg” class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                </div>
+                            </div>
+                            <div class="p-2 w-1/2 mx-auto">
+                                <div class="relative flex justify-around">
+                                    <div><input type="radio" name="is_selling" value="1" class="mr-2" @if($shop->is_selling === 1){checked} @endif>販売中</div>
+                                    <div><input type="radio" name="is_selling" value="0" class="mr-2" @if($shop->is_selling === 0){checked} @endif>停止中</div>
                                 </div>
                             </div>
                         </div>
