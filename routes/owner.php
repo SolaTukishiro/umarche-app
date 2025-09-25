@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComponentTestController;
+use App\Http\Controllers\Owner\ImageController;
 use App\Http\Controllers\Owner\shopController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LifeCycleTestController;
@@ -15,6 +16,9 @@ Route::prefix('shops')->middleware('auth:owners')->group(function(){
     Route::get('edit/{shop}', [shopController::class, 'edit'])->name('shops.edit');
     Route::post('update/{shop}', [shopController::class, 'update'])->name('shops.update');
 });
+
+Route::resource('images', ImageController::class)
+    ->middleware('auth:owners')->except(['show']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
