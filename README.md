@@ -64,3 +64,12 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## About image dummy data
+Sample image files are stored in the public/images folder as [sample1.jpg ~ sample6.jpg].
+
+After linking the storage folder with `sail artisan storage:link`, images saved in the storage/app/public/products folder will be displayed.
+
+(If the products folder does not exist, please create it.)
+
+
