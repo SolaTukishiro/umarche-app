@@ -45,4 +45,9 @@ class Shop extends Model
     {
         return $this->belongsTo(Owner::class);
     }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
