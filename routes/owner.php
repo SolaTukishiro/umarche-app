@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ComponentTestController;
 use App\Http\Controllers\Owner\ImageController;
+use App\Http\Controllers\Owner\ProductController;
 use App\Http\Controllers\Owner\shopController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LifeCycleTestController;
@@ -19,6 +20,9 @@ Route::prefix('shops')->middleware('auth:owners')->group(function(){
 
 Route::resource('images', ImageController::class)
     ->middleware('auth:owners')->except(['show']);
+
+Route::resource('products', ProductController::class)
+    ->middleware('auth:owners');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
