@@ -21,7 +21,7 @@
             @elseif(request()->is('admin*'))
                 @include('layouts.admin-navigation')
             @else
-                @include('layouts.navigation')
+                @include('layouts.user-navigation')
             @endif
             <!-- Page Heading -->
             @isset($header)

@@ -14,7 +14,7 @@ use App\Http\Controllers\User\ItemController;
 //    return view('dashboard');
 //})->middleware(['auth:users', 'verified'])->name('dashboard');
 
-Route::middleware('auth:users')->group(function(){
+Route::middleware('auth:users')->name('user.')->group(function(){
     Route::get('/', [ItemController::class, 'index'])->name('items.index');
 });
 
